@@ -73,9 +73,10 @@ type Membership struct{}
 
 type Source Link
 
-type Date struct{}
+type Date struct {
+	time.Time
+}
 
 func (d Date) MarshalJSON() ([]byte, error) {
-	t := time.Now() // TODO
-	return []byte(t.Format(`"` + DateSpec + `"`)), nil
+	return []byte(d.Format(`"` + DateSpec + `"`)), nil
 }
