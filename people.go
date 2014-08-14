@@ -12,7 +12,7 @@ type Person struct {
 	OtherNames       []OtherNames    `json:"other_names"`       // Alternate or former names
 	Identifiers      []Identifier    `json:"identifiers"`       // Issued identifiers
 	FamilyName       *string         `json:"family_name"`       // One or more family names
-	GivenName        *string         `json:"given_name"`        //One or more primary given names
+	GivenName        *string         `json:"given_name"`        // One or more primary given names
 	AdditionalName   *string         `json:"additional_name"`   // One or more secondary given names
 	HonorificPrefix  *string         `json:"honorific_prefix"`  // One or more honorifics preceding a person's name
 	HonorificSuffix  *string         `json:"honorific_suffix"`  // One or more honorifics following a person's name
@@ -23,15 +23,37 @@ type Person struct {
 	BirthDate        Date            `json:"birth_date"`        // A date of birth
 	DeathDate        Date            `json:"death_date"`        // A date of death
 	Image            *string         `json:"image"`             // A URL of a head shot
-	Summary          *string         `json:"summary"`           //A one-line account of a person's life
+	Summary          *string         `json:"summary"`           // A one-line account of a person's life
 	Biography        *string         `json:"biography"`         // An extended account of a person's life
-	NationalIdentify *string         `json:"national_identity"` //A national identity
-	ContactDetails   []ContactDetail `json:"contact_details"`   //Means of contacting the person
-	Links            []Link          `json:"link"`              //URLs to documents about the person
-	Memberships      []Membership    `json:"memberships"`       //Memberships
-	CreatedAt        time.Time       `json:"created_at"`        //The time at which the resource was created
-	UpdatedAt        time.Time       `json:"updated_at"`        //The time at which the resource was last modified
+	NationalIdentify *string         `json:"national_identity"` // A national identity
+	ContactDetails   []ContactDetail `json:"contact_details"`   // Means of contacting the person
+	Links            []Link          `json:"link"`              // URLs to documents about the person
+	Memberships      []Membership    `json:"memberships"`       // Memberships
+	CreatedAt        time.Time       `json:"created_at"`        // The time at which the resource was created
+	UpdatedAt        time.Time       `json:"updated_at"`        // The time at which the resource was last modified
 	Sources          []Source        `json:"sources"`           // URLs to documents from which the person is derived
+}
+
+type Organization struct {
+	Id               *string         `json:"id"`               // The organization's unique identifier
+	Name             *string         `json:"name"`             // A primary name, e.g. a legally recognized name
+	OtherNames       []OtherNames    `json:"other_names"`      // Alternate or former names
+	Identifiers      []Identifier    `json:"identifiers"`      // Issued identifiers
+	Classification   *string         `json:"classification"`   // An organization category, e.g. committee
+	ParentId         *string         `json:"parent_id"`        //The ID of the organization that contains this organization
+	Parent           *Organization   `json:"parent"`           // The organization that contains this organization
+	AreaId           *string         `json:"area"`             // The ID of the geographic area to which this organization is related
+	Area             *Area           `json:"area"`             // The geographic area to which this organization is related
+	FoundingDate     *string         `json:"founding_date"`    // A date of founding
+	DissoulutionDate *string         `json:"dissolution_date"` // A date of dissolution
+	Image            *string         `json:"image"`            // A URL of a head shot
+	ContactDetails   []ContactDetail `json:"contact_details"`  // Means of contacting the person
+	Links            []Link          `json:"link"`             // URLs to documents about the person
+	Memberships      []Membership    `json:"memberships"`      // Memberships
+	Posts            []Post          `json:"posts"`            // Posts within the organization
+	CreatedAt        time.Time       `json:"created_at"`       // The time at which the resource was created
+	UpdatedAt        time.Time       `json:"updated_at"`       // The time at which the resource was last modified
+	Sources          []Source        `json:"sources"`          // URLs to documents from which the person is derived
 }
 
 type OtherNames struct {
@@ -76,6 +98,9 @@ type Source Link
 type Date struct {
 	time.Time
 }
+
+type Area struct{} // TODO
+type Post struct{} // TODO
 
 func (d Date) MarshalJSON() ([]byte, error) {
 	return []byte(d.Format(`"` + DateSpec + `"`)), nil
