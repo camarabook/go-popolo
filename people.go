@@ -10,7 +10,7 @@ type Person struct {
 	Id               *string         `json:"id"`                // The person's unique identifier
 	Name             *string         `json:"name"`              // A person's preferred full name
 	OtherNames       []OtherNames    `json:"other_names"`       // Alternate or former names
-	Identifiers      []Identifiers   `json:"identifiers"`       // Issued identifiers
+	Identifiers      []Identifier    `json:"identifiers"`       // Issued identifiers
 	FamilyName       *string         `json:"family_name"`       // One or more family names
 	GivenName        *string         `json:"given_name"`        //One or more primary given names
 	AdditionalName   *string         `json:"additional_name"`   // One or more secondary given names
@@ -47,7 +47,7 @@ type OtherNames struct {
 	Note            *string `json:"note"`             // A note, e.g. 'Birth name'
 }
 
-type Identifiers struct {
+type Identifier struct {
 	Identifier *string `json:"identifier"` // An issued identifier, e.g. a DUNS number
 	Scheme     *string `json:"scheme"`     // An identifier scheme, e.g. DUNS
 }
