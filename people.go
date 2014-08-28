@@ -66,7 +66,7 @@ type ContactDetail struct {
 
 type Link struct {
 	Url  *string `json:"url"`  // A URL
-	Note *string `json:"node"` // A note, e.g. 'Wikipedia page'
+	Note *string `json:"note"` // A note, e.g. 'Wikipedia page'
 }
 
 type Membership struct{}
