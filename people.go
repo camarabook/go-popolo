@@ -73,13 +73,5 @@ type Membership struct{}
 
 type Source Link
 
-type Date struct {
-	time.Time
-}
-
 type Area struct{} // TODO
 type Post struct{} // TODO
-
-func (d Date) MarshalJSON() ([]byte, error) {
-	return []byte(d.Format(`"` + DateSpec + `"`)), nil
-}
