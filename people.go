@@ -19,7 +19,7 @@ type Person struct {
 	Email            *string         `json:"email"`             // A preferred email address
 	Gender           *string         `json:"gender"`            // A gender
 	BirthDate        Date            `json:"birth_date"`        // A date of birth
-	DeathDate        Date            `json:"death_date"`        // A date of death
+	DeathDate        DateTime        `json:"death_date"`        // A date of death
 	Image            *string         `json:"image"`             // A URL of a head shot
 	Summary          *string         `json:"summary"`           // A one-line account of a person's life
 	Biography        *string         `json:"biography"`         // An extended account of a person's life
