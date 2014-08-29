@@ -2,8 +2,6 @@ package popolo
 
 import "time"
 
-const DateSpec = "2006-01-02"
-
 // Using spec from http://popoloproject.com/
 
 type Person struct {
@@ -56,7 +54,7 @@ type ContactDetail struct {
 	Label      *string   `json:"label"`       // A human-readable label for the contact detail
 	Type       *string   `json:"type"`        //  [required] A type of medium, e.g. 'fax' or 'email'
 	Value      *string   `json:"value"`       // [required] A value, e.g. a phone number or email address
-	Note       *string   `json:"node"`        // A note, e.g. for grouping contact details by physical location
+	Note       *string   `json:"note"`        // A note, e.g. for grouping contact details by physical location
 	ValidFrom  Date      `json:"valid_from"`  // The date from which the contact detail is valid",
 	ValidUntil Date      `json:"valid_until"` // The date from which the contact detail is no longer valid",
 	CreatedAt  time.Time `json:"created_at"`  // The time at which the resource was created
